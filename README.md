@@ -2,6 +2,8 @@
 
 Real-time safety monitoring for the TXST Ingram School of Engineering Makerspace. Uses a ZED stereo camera to detect CNC machines and track people simultaneously.
 
+![Two different CNC machines object detection success](images\both-cnc-machine-detected.jpeg)
+
 ## How It Works
 
 **Step 1 — Capture**
@@ -26,7 +28,7 @@ Two views update in real time:
 - **OpenCV window** — camera feed with machine labels, distance readouts, and skeleton overlays
 - **OpenGL viewer** — live 3D point cloud of the scene with tracked objects
 
----
+![Human body tracking and CNC machine object detection](images\cnc-machine-human-track.jpeg)
 
 ## Requirements
 
