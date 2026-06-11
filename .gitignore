@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Models / recordings (large binaries, hardware-specific)
+*.onnx
+*.svo
+*.svo2
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

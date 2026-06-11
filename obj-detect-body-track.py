@@ -34,7 +34,7 @@ from ultralytics import YOLO
 import ogl_viewer.viewer as gl
 import cv_viewer.tracking_viewer as cv_viewer
 
-ONNX_MODEL_PATH = "/home/txst-robotics/MARS-code/makerspace-detector/images/best.onnx"
+DEFAULT_ONNX_MODEL_PATH = "best.onnx"
 CNC_CLASSES = ['haas-st-20y', 'haas-vf-2yt', 'haas-vf-3']
 
 USE_BATCHING = False
@@ -60,8 +60,8 @@ def main(opt):
         print(repr(status))
         exit()
 
-    print(f"Loading CNC model: {ONNX_MODEL_PATH}")
-    cnc_model = YOLO(ONNX_MODEL_PATH, task='detect')
+    print(f"Loading CNC model: {opt.model}")
+    cnc_model = YOLO(opt.model, task='detect')
 
     # Enable positional tracking
     positional_tracking_parameters = sl.PositionalTrackingParameters()
@@ -183,6 +183,7 @@ def main(opt):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument('--model', type=str, help='Path to the YOLOv11 ONNX detection model', default=DEFAULT_ONNX_MODEL_PATH)
     parser.add_argument('--input_svo_file', type=str, help='Path to an .svo file, if you want to replay it', default=None)
     parser.add_argument('--disable-gpu-data-transfer', action='store_true', help='Disable GPU data transfer acceleration with CuPy even if CuPy is available')
     opt = parser.parse_args()

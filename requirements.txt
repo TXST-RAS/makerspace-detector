@@ -1,0 +1,12 @@
+# MARS perception software dependencies.
+# Note: pyzed ships with the ZED SDK installer, not pip. Install the ZED SDK
+# first (https://www.stereolabs.com/developers), then the packages below.
+# This software targets dedicated hardware (Jetson Orin Nano + ZED 2i); the
+# list documents the stack rather than serving as a standalone install.
+
+ultralytics
+opencv-python
+numpy
+
+# Optional: GPU-accelerated point cloud transfer
+# cupy

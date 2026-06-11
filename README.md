@@ -85,17 +85,20 @@ The CNC detector was trained as a proof-of-concept for identifying machines in t
 | **Augmentations** | brightness, exposure, blur, noise, small rotations |
 | **Result** | Real-time CNC detection on the live ZED 2i feed |
 
-To train a model for different machines, see [`makerspace-machines-photo-model-steps`](makerspace-machines-photo-model-steps) for a full walkthrough: photographing machines, labeling in Roboflow, training YOLOv11, exporting to ONNX, and dropping it into this pipeline. After training, update `ONNX_MODEL_PATH` and `CNC_CLASSES` at the top of `obj-detect-body-track.py`.
+To train a model for different machines, see [`makerspace-machines-photo-model-steps.md`](makerspace-machines-photo-model-steps.md) for a full walkthrough: photographing machines, labeling in Roboflow, training YOLOv11, exporting to ONNX, and dropping it into this pipeline. After training, pass the new model with `--model` (and update `CNC_CLASSES` at the top of `obj-detect-body-track.py`).
 
 ---
 
 ## Running the Perception Pipeline
 
+MARS runs on dedicated hardware (Jetson Orin Nano + ZED 2i + the MARS chassis). This repo documents and showcases that system rather than serving as a standalone runnable package, so the steps below assume the robot's hardware and a trained model are in place.
+
 **Requirements**
 - ZED stereo camera (ZED SDK + `pyzed` installed)
 - Python 3.10
-- `ultralytics`, `opencv-python`, `numpy`
+- `ultralytics`, `opencv-python`, `numpy` (see `requirements.txt`)
 - (Optional) CuPy for GPU-accelerated point cloud transfer
+- A trained CNC model (`best.onnx`); pass its path with `--model`
 
 **Live camera**
 ```bash
